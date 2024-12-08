@@ -21,7 +21,7 @@ module Advent2024
 
     # TODO: Add tests!!!!!!!
     def test_read_map
-      m = Advent2024.array_from_string_lines(sample, "").to_a
+      m = Map.from_string(sample)
       lab = PatrollingLab.new(m)
 
       assert_equal 10, lab.room.height

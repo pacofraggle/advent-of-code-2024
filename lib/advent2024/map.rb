@@ -57,6 +57,37 @@ module Advent2024
 
       nil
     end
+
+    def scan
+      continue = true
+      (0..height-1).each do |row|
+        (0..width-1).each do |col|
+          pos = Advent2024::Coord.new(row, col)
+          cell = value(pos)
+          continue = yield pos, cell
+          break unless continue
+        end
+        break unless continue
+      end
+    end
+
+    class << self
+      def from_file(name)
+        map_grid = []
+        Advent2024.read_data(name, //) do |line|
+          map_grid << line
+        end
+
+        Map.new(map_grid)
+      end
+
+      def from_string(str)
+        m = Advent2024.array_from_string_lines(str, "").to_a
+
+        Map.new(m)
+      end
+
+    end
   end
 end
 

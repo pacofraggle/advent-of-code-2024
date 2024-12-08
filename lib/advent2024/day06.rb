@@ -72,8 +72,8 @@ module Advent2024
 
     attr_reader :room, :current, :guard
 
-    def initialize(map_grid=[], initial=nil, locations=nil)
-      @room = Advent2024::Map.new(map_grid)
+    def initialize(map, initial=nil, locations=nil)
+      @room = Advent2024::Map.new(Marshal.load(Marshal.dump(map.grid)))
       if initial.nil?
         find_guard_in_room
       else
@@ -91,12 +91,9 @@ module Advent2024
     end
 
     def self.from_file(name)
-      map_grid = []
-      Advent2024.read_data(name, //) do |line|
-        map_grid << line
-      end
+      map = Advent2024::Map.from_file(name)
 
-      PatrollingLab.new(map_grid)
+      PatrollingLab.new(map)
     end
 
     def move_direction
@@ -134,7 +131,7 @@ module Advent2024
       (1..@loc_db.raw.size-1).each do |i|
         # TODO: try again starting from the step right before the last
         # reuse already known locations and use the constructor's 3rd param
-        lab = PatrollingLab.new(room.grid, @initial)
+        lab = PatrollingLab.new(room, @initial)
         last = @loc_db.raw[i]
         lab.room.set(last.coord, "O")
 
@@ -163,7 +160,7 @@ module Advent2024
       cell == "#" || cell == "O" 
     end
 
-    def find_guard_in_room
+    def find_guard_in_room2
       (0..room.height-1).each do |row|
         (0..room.width-1).each do |col|
           pos = Advent2024::Coord.new(row, col)
@@ -175,6 +172,18 @@ module Advent2024
           end
         end
         break unless @initial.nil?
+      end
+    end
+
+    def find_guard_in_room
+      room.scan do |pos, cell|
+        if cell != "." && cell != "#"
+          @initial = Location.new(pos, cell)
+          room.set(pos, ".")
+          false
+        else
+          true
+        end
       end
     end
   end
