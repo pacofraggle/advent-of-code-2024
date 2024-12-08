@@ -4,6 +4,10 @@ module Advent2024
       Coord.new(row + coord.row, col + coord.col)
     end
 
+    def -(coord)
+      Coord.new(row - coord.row, col - coord.col)
+    end
+
     def ==(other)
       self.class == other.class && self.row == other.row && self.col == other.col
     end
@@ -21,15 +25,16 @@ module Advent2024
     end
 
     def value(coord)
-      return if out_of_bounds?(coord)
+      return false if out_of_bounds?(coord)
 
       @grid[coord.row][coord.col]
     end
 
     def set(coord, cell)
-      return if out_of_bounds?(coord)
+      return false if out_of_bounds?(coord)
 
       @grid[coord.row][coord.col] = cell.dup
+      true
     end
 
     def width
