@@ -1,0 +1,28 @@
+PATH
+  remote: .
+  specs:
+    advent2024 (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    coderay (1.1.3)
+    method_source (1.1.0)
+    minitest (5.25.2)
+    pry (0.15.0)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    rake (13.2.1)
+
+PLATFORMS
+  ruby
+  x86_64-linux
+
+DEPENDENCIES
+  advent2024!
+  minitest (~> 5.16)
+  pry (~> 0.15.0)
+  rake (~> 13.0)
+
+BUNDLED WITH
+   2.5.16
