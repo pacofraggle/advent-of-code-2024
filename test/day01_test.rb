@@ -38,8 +38,5 @@ module Advent2024
 
       assert_equal 31, @loc.similarity_score
     end
-
   end
 end
-
-

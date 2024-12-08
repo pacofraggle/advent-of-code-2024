@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Integer
   def l(other)
     "#{self.to_s}#{other.to_s}".to_i

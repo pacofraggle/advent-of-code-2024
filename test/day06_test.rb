@@ -35,5 +35,3 @@ module Advent2024
     end
   end
 end
-
-

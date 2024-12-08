@@ -66,7 +66,7 @@ module Advent2024
     end
 
     def test_extra_safe_reports
-      assert 4, @safety.extra_safe_reports
+      assert_equal 4, @safety.extra_safe_reports
     end
   end
 end

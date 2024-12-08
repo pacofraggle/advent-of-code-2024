@@ -38,7 +38,7 @@ module Advent2024
     end
 
     def test_update_creation
-      assert [3, 4, 5], PrintingQueue::Update.new([3, 4, 5]).pages
+      assert_equal [3, 4, 5], PrintingQueue::Update.new([3, 4, 5]).pages
     end
 
     def test_update_to_order_rules
@@ -51,7 +51,7 @@ module Advent2024
     end
 
     def test_update_middle_page
-      assert 4, PrintingQueue::Update.new([3, 4, 5]).middle_page
+      assert_equal 4, PrintingQueue::Update.new([3, 4, 5]).middle_page
     end
 
 
@@ -121,5 +121,3 @@ module Advent2024
     end
   end
 end
-
-

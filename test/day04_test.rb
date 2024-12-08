@@ -37,8 +37,5 @@ MXMXAXMASX
 
       assert_equal 9, searcher.count_crosses("MAS")
     end
-
   end
 end
-
-
