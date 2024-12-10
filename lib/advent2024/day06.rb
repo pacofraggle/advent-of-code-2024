@@ -76,6 +76,7 @@ module Advent2024
 
     def initialize(map, initial=nil, locations=nil)
       @room = Advent2024::Map.new(Marshal.load(Marshal.dump(map.grid)))
+
       if initial.nil?
         find_guard_in_room
       else
