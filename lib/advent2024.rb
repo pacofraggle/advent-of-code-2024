@@ -37,8 +37,8 @@ module Advent2024
         opts = args.nil? || args.size == 0 ? ["data/input-day#{day}"] : ARGV[1..-1]
 
         klass.run(opts)
-      rescue NameError => e
-        puts e.message
+      #rescue NameError => e
+      #  puts e.message
       end
     end
   end
