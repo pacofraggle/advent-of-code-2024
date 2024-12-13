@@ -16,6 +16,15 @@ module Advent2024
     end
   end
 
+  def self.chars_map_from(name)
+    lines = []
+    read_data(name, //).each do |cells|
+      lines << cells
+    end
+
+    Map.new(lines)
+  end
+
   def self.array_from_string_lines(str, separator = nil)
     array = []
     str.each_line do |line|
@@ -25,7 +34,6 @@ module Advent2024
 
     array
   end
-
 
   class Launcher
     def self.execute(day, args = [])

@@ -144,9 +144,13 @@ module Advent2024
       end
 
       def from_string(str)
-        map_grid = Advent2024.array_from_string_lines(str, "").to_a
+        m = Advent2024.array_from_string_lines(str, "").to_a
 
-        Map.new(map_grid)
+        Map.new(m)
+      end
+
+      def blank(height, width, cell = nil)
+        Map.new(1.upto(height).map { |row| Array.new(width, cell) })
       end
     end
   end
