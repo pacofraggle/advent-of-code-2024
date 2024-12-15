@@ -90,7 +90,11 @@ module Advent2024
     end
 
     def ==(other)
-      self.class == other.class && self.row == other.row && self.col == other.col
+      self.class == other.class && same?(other.row, other.col)
+    end
+
+    def same?(r, c)
+      self.row == r && col == c
     end
 
     def to_s
