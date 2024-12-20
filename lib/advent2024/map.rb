@@ -89,6 +89,10 @@ module Advent2024
       Coord.new(row - coord.row, col - coord.col)
     end
 
+    def *(value)
+      Coord.new(row*value, col*value)
+    end
+
     def ==(other)
       self.class == other.class && same?(other.row, other.col)
     end
