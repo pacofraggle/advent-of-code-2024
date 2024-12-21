@@ -24,9 +24,28 @@ Prize: X=18641, Y=10279
       EOS
     end
 
-    def test_
+    def test_part_1
       claws = build_from_sample
-      puts claws.min_tokens
+      assert 480, claws.min_tokens
+
+      solutions = claws.solutions
+      assert_equal 4, solutions.size
+      assert_equal [80, 40], solutions[0]
+      assert_nil solutions[1]
+      assert_equal [38, 86], solutions[2]
+      assert_nil solutions[3]
+    end
+
+    def test_part_2
+      claws = build_from_sample
+      claws.correct_prizes(10000000000000)
+
+      solutions = claws.solutions
+      assert_equal 4, solutions.size
+      assert_nil solutions[0]
+      assert solutions[1]
+      assert_nil solutions[2]
+      assert solutions[3]
     end
 
     def build_from_sample
