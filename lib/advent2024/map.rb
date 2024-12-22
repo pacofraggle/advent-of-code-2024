@@ -101,6 +101,10 @@ module Advent2024
       self.row == r && col == c
     end
 
+    def between?(a, b)
+      row >= a.row && row <= b.row && col >= a.col && col <= b.col
+    end
+
     def to_s
       "(#{row}, #{col})"
     end
