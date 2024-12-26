@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "map"
+
 module Advent2024
   class GardenGroups
     # The order is important for the solution of region sides

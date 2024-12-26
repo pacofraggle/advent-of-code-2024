@@ -37,17 +37,14 @@ module Advent2024
 
   class Launcher
     def self.execute(day, args = [])
-      days = day.nil? ? (1..25).to_a.map { |i| i.to_s.rjust(2, "0") } : [day]
-      days.each do |day|
-        klass = Module.const_get("Advent2024::Day#{day}")
-        puts "Day #{day} ---------------------------------"
+      day = day.rjust(2, "0")
+      require_relative "./advent2024/day#{day}"
+      klass = Module.const_get("Advent2024::Day#{day}")
+      puts "Day #{day} ---------------------------------"
 
-        opts = args.nil? || args.size == 0 ? ["data/input-day#{day}"] : ARGV[1..-1]
+      opts = args.nil? || args.size == 0 ? ["data/input-day#{day}"] : ARGV[1..-1]
 
-        klass.run(opts)
-      #rescue NameError => e
-      #  puts e.message
-      end
+      klass.run(opts)
     end
   end
 end

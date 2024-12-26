@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "map"
+
 module Advent2024
   class RestroomRedoubt
     class Robot
