@@ -44,8 +44,8 @@ module Advent2024
       grid.to_s
     end
 
-    def draw 
-      grid.each { |row| puts row.join }
+    def draw(col_sep = "")
+      grid.each { |row| puts row.join(col_sep) }
 
       nil
     end
