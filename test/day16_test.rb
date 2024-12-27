@@ -31,19 +31,20 @@ module Advent2024
       assert_equal Coord.new(13, 1), maze.start
     end
 
-    def test_dijsktra
+    def test_map1
       maze = build_from(sample)
 
       maze.draw
 
-      path = maze.dijsktra
+      maze.calculate_all_min_dists
+
+      path = maze.dijsktra.path_from_prev(maze.end)
 
       maze.draw(path)
-      puts maze.score(path)
-      puts path.size
+      assert_equal 7036, maze.dijsktra.score(maze.end)
     end
 
-    def test_dijsktra2
+    def test_map2
       str = <<~EOS
 #################
 #...#...#...#..E#
@@ -68,31 +69,12 @@ module Advent2024
 
       maze.draw
 
-      path = maze.dijsktra
+      maze.calculate_all_min_dists
+
+      path = maze.dijsktra.path_from_prev(maze.end)
 
       maze.draw(path)
-      puts maze.score(path)
-      puts path.size
-    end
-
-    def test_minimaze
-      str = <<~EOS
-#####
-#..E#
-#.#.#
-#.#.#
-#S..#
-#####
-      EOS
-
-      maze = build_from(str)
-
-      maze.draw
-
-      path = maze.dijsktra
-
-      maze.draw(path)
-      puts maze.score(path)
+      assert_equal 11048, maze.dijsktra.score(maze.end)
     end
 
     def build_from(sample)
